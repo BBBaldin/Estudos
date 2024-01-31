@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mniCadastros"
+        android:title="Cadastros">
+        <menu>
+            <item android:id="@+id/mniContatosPessoais"
+            android:title="Contatos Pessoais">
+            </item>
+            <item android:id="@+id/mniContatosProfissionais"
+                android:title="Contatos Porfissionais">
+            </item>
+        </menu>
+    </item>
+    <item android:title="Relatórios"
+        android:id="@+id/mniRelatorios">
+        <menu>
+            <item android:id="@+id/mnirContatosPessoais"
+                android:title="Contatos Pessoais">
+            </item>
+            <item android:id="@+id/mnirContatosProfissionais"
+                android:title="Contatos Profissionais">
+            </item>
+        </menu>
+    </item>
+    <item android:id="@+id/mniFechar"
+        android:title="Encerrar Aplicativo">
+    </item>
+</menu>
