@@ -1,10 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:shopping_list_app/data/categories.dart';
 import 'package:shopping_list_app/models/grocery_item.dart';
 import 'package:shopping_list_app/widgets/new_item.dart';
-import 'package:http/http.dart' as http;
 
 class GroceryList extends StatefulWidget {
   const GroceryList({super.key});
@@ -26,9 +25,7 @@ class _GroceryListState extends State<GroceryList> {
 
   void _loadItems() async {
     final url = Uri.https(
-      'testeshoppinglist-default-rtdb.firebaseio.com',
-      'shopping-list.json',
-    );
+        '*************.firebaseio.com', 'shopping-list.json');
 
     try {
       final response = await http.get(url);
@@ -51,8 +48,7 @@ class _GroceryListState extends State<GroceryList> {
       for (final item in listData.entries) {
         final category = categories.entries
             .firstWhere(
-              (catItem) => catItem.value.title == item.value['category'],
-            )
+                (catItem) => catItem.value.title == item.value['category'])
             .value;
         loadedItems.add(
           GroceryItem(
@@ -92,15 +88,17 @@ class _GroceryListState extends State<GroceryList> {
 
   void _removeItem(GroceryItem item) async {
     final index = _groceryItems.indexOf(item);
-    final url = Uri.https(
-      '***************.firebaseio.com',//url falso
-      'shopping-list/${item.id}.json',
-    );
+    setState(() {
+      _groceryItems.remove(item);
+    });
+
+    final url = Uri.https('***********.firebaseio.com',
+        'shopping-list/${item.id}.json');
 
     final response = await http.delete(url);
 
     if (response.statusCode >= 400) {
-      //se der errado a remoção por conta de erro no url
+      // Optional: Show error message
       setState(() {
         _groceryItems.insert(index, item);
       });
@@ -158,11 +156,9 @@ class _GroceryListState extends State<GroceryList> {
         title: const Text('Carrinho de Compras'),
         actions: [
           IconButton(
-            onPressed: () {
-              _addItem();
-            },
+            onPressed: _addItem,
             icon: const Icon(Icons.add),
-          )
+          ),
         ],
       ),
       body: content,
