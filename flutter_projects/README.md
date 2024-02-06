@@ -4,3 +4,4 @@ Projetos feitos em Flutter/Dart <br><br>
 -mod5 - App de Despesas; <br>
 -food_app - App de Receitas Culinárias;<br>
 -shopping_list_app - App de Carrinho de Compras<br>
+-chat_app - Aplicativo de chats 😂
